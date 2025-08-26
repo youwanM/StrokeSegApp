@@ -1,0 +1,3 @@
+[submodule "BootStrap"]
+	path = BootStrap
+	url = git@github.com:Empenn-Stroke/StrokeSegBootstrapper.git
