@@ -1,0 +1,29 @@
+
+ExternalProject_Add(${ep}
+    PREFIX "${EP_BASE_PATH}"
+    
+    TMP_DIR      "${EP_BASE_PATH}/tmp/${ep}/"
+    STAMP_DIR    "${EP_BASE_PATH}/stamp/${ep}/"
+    DOWNLOAD_DIR "${EP_BASE_PATH}/download/${ep}/"
+    SOURCE_DIR   "${EP_BASE_PATH}/source/${ep}/"
+    BINARY_DIR   "${EP_BASE_PATH}/build/${ep}/"
+    INSTALL_DIR  "${EP_BASE_PATH}/install/${ep}/"
+    LOG_DIR      "${EP_BASE_PATH}/log/${ep}/"     
+    
+    CMAKE_GENERATOR ${gen}
+    CMAKE_GENERATOR_PLATFORM ${CMAKE_GENERATOR_PLATFORM}
+    CMAKE_ARGS ${cmake_args}
+    CMAKE_CACHE_ARGS ${cmake_cache_args}
+    
+    DOWNLOAD_NAME     "${${ep}_NAME}"
+    DOWNLOAD_COMMAND  "${${ep}_DOWNLOAD_CMD}"
+    PATCH_COMMAND     "${${ep}_PATCH_CMD}"
+    CONFIGURE_COMMAND ""  # No configure step
+    BUILD_COMMAND     ""  # No build step
+    INSTALL_COMMAND   "${${ep}_INSTALL_CMD}"
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+    STEP_TARGETS download install # Only enable download and install
+    LOG_DOWNLOAD ON
+    DEPENDS embed_python
+)
+
