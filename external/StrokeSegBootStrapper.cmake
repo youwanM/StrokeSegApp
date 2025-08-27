@@ -5,6 +5,7 @@ set(cmake_args
   
 set(cmake_cache_args
   -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/bin/Program/StrokeSegCore/
+  -DPREFIX_NAME:STRING=StrokeSeg 
   )
 
 ExternalProject_Add(${ep}
