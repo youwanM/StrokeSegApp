@@ -4,7 +4,7 @@ set(cmake_args
   )
   
 set(cmake_cache_args
-  -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/bin/Program/SegStrokCore/
+  -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/bin/Program/StrokeSegCore/
   )
 
 ExternalProject_Add(${ep}
@@ -15,7 +15,7 @@ ExternalProject_Add(${ep}
     DOWNLOAD_DIR "${EP_BASE_PATH}/download/${ep}/"
     SOURCE_DIR   "${CMAKE_SOURCE_DIR}/BootStrap"
     BINARY_DIR   "${EP_BASE_PATH}/build/${ep}/"
-    INSTALL_DIR  "${CMAKE_BINARY_DIR}/bin/Program/SegStrokCore/"
+    INSTALL_DIR  "${CMAKE_BINARY_DIR}/bin/Program/StrokeSegCore/"
     LOG_DIR      "${EP_BASE_PATH}/log/${ep}/"    
     
     CMAKE_GENERATOR ${gen}

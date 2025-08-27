@@ -9,7 +9,7 @@ It provides both a **Graphical User Interface (GUI)** and a **Command Line Inter
 - **Review and export results** for further analysis  
 
 ## Requirements
-- A modern operating system (Windows 8 or more recent)  
+- A modern operating system (Windows 10 or more recent)  
 - Sufficient GPU/CPU and RAM resources (Recommended : 16GB)  
 
 ## Documentation

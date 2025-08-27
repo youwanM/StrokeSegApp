@@ -1,4 +1,3 @@
-message(" -------------------------------------- "${${ep}_PATCH_CMD}" ---------------------------------------- ")
 
 ExternalProject_Add(${ep}
     PREFIX "${EP_BASE_PATH}"

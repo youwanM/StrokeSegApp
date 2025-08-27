@@ -4,7 +4,6 @@
 ## Install phases for CPack bundelling
 ###############################################################################
 install(DIRECTORY ${CMAKE_BINARY_DIR}/bin/Program/ DESTINATION . COMPONENT BIN)
-#install(DIRECTORY D:/d/Yann/StrokSegApp-build/titi DESTINATION . COMPONENT BIN)
 install(DIRECTORY ${CMAKE_BINARY_DIR}/bin/AppData/ DESTINATION . COMPONENT DATA)
 
 ###############################################################################
@@ -33,7 +32,7 @@ set(CPACK_RESOURCE_FILE_WELCOME    "${CMAKE_SOURCE_DIR}/Welcome.md")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "${CPACK_PACKAGE_NAME}")
 
 set(CPACK_CREATE_DESKTOP_LINKS "${CPACK_PACKAGE_NAME}") # Add a desktop shortcut
-set(CPACK_PACKAGE_EXECUTABLES ${CPACK_PACKAGE_NAME}BootStraper;${CPACK_PACKAGE_NAME}) # Add shortcut in the Startup menu
+set(CPACK_PACKAGE_EXECUTABLES ${CPACK_PACKAGE_NAME}Core/${CPACK_PACKAGE_NAME}BootStrapper.exe;${CPACK_PACKAGE_NAME}) # Add shortcut in the Startup menu
 
 set(CPACK_THREADS 0)
 

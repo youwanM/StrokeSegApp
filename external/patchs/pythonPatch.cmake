@@ -13,7 +13,7 @@ foreach(_PTH_FILE ${_PTH_FILES})
     file(READ "${_PTH_FILE}" FILE_CONTENT)
 
     string(REPLACE "#import site" "import site" NEW_CONTENT "${FILE_CONTENT}") # Replaces '#import site' with 'import site'
-    string(REPLACE ".\n" ".\n..\\SegStrokCore" NEW_CONTENT "${NEW_CONTENT}")  # Replaces '.' with '.' and '\\SegStrokCore'
+    string(REPLACE ".\n" ".\n..\\StrokeSegCore" NEW_CONTENT "${NEW_CONTENT}")  # Replaces '.' with '.' and '\\StrokeSegCore'
 	
     # If the content was modified, the file is rewritten
     if(NOT "${NEW_CONTENT}" STREQUAL "${FILE_CONTENT}")

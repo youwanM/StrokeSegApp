@@ -1,11 +1,10 @@
 
-set(ICONS_PATH "${PROJECT_SOURCE_DIR}/resources") #/StrokeSeg.ico")
+set(ICONS_PATH "${PROJECT_SOURCE_DIR}/resources")
 
 # Used on pinned on taskbar
 set(CPACK_PACKAGE_ICON ${ICONS_PATH}/StrokeSegPWR.ico)
 string(REGEX REPLACE "/" "\\\\\\\\" ICONS_PATH "${ICONS_PATH}")
 
-message("****************************************** ${ICONS_PATH} **********************************************")
 
 #if(CPACK_GENERATOR MATCHES "NSIS")
 
@@ -31,13 +30,10 @@ message("****************************************** ${ICONS_PATH} **************
 
 	# Add a link to the application website in the Startup menu.
 	set(CPACK_NSIS_MENU_LINKS
-	  "SegStrokCore/StrokeSegBootStrapper.exe" 
+	  "StrokeSegCore\\\\StrokeSegBootStrapper.exe" 
 	  "${CMAKE_PROJECT_NAME}") 
 
 	# Run APP after installation
-	set(CPACK_NSIS_MUI_FINISHPAGE_RUN "$INSTDIR\\\\SegStrokCore\\\\StrokeSegBootStrapper.exe")
-
-	# Delete the Startup menu link after uninstallation
-	set(CPACK_NSIS_DELETE_ICONS_EXTRA " Delete '\$SMPROGRAMS\\\\$MUI_TEMP\\\\*.*' ")
+	set(CPACK_NSIS_MUI_FINISHPAGE_RUN "$INSTDIR\\\\StrokeSegCore\\\\StrokeSegBootStrapper.exe")
 	
 	set(CPACK_NSIS_DATA_INSTALL_DIRECTORY "$COMMONPROGRAMDATA\\\\${CPACK_PACKAGE_NAME}\\\\")
