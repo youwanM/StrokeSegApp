@@ -24,6 +24,6 @@ ExternalProject_Add(${ep}
     BUILD_COMMAND     ""  # No build step
     INSTALL_COMMAND   "${${ep}_INSTALL_CMD}"
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
-    STEP_TARGETS download install# Only enable download and install (unzip)
+    STEP_TARGETS download install # Only enable download and install (unzip)
     LOG_DOWNLOAD ON
 )

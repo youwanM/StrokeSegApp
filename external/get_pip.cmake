@@ -10,6 +10,9 @@ ExternalProject_Add(${ep}
     INSTALL_DIR  "${EP_BASE_PATH}/install/${ep}/"
     LOG_DIR      "${EP_BASE_PATH}/log/${ep}/"     
     
+    URL "${${ep}_URL}"
+    URL_HASH SHA256=${${ep}_HASH}  
+    
     CMAKE_GENERATOR ${gen}
     CMAKE_GENERATOR_PLATFORM ${CMAKE_GENERATOR_PLATFORM}
     CMAKE_ARGS ${cmake_args}
@@ -26,4 +29,3 @@ ExternalProject_Add(${ep}
     LOG_DOWNLOAD ON
     DEPENDS embed_python
 )
-

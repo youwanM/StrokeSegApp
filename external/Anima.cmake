@@ -19,10 +19,11 @@ ExternalProject_Add(${ep}
     CMAKE_CACHE_ARGS ${cmake_cache_args}
     
     DOWNLOAD_NAME     "${${ep}_NAME}"
+    PATCH_COMMAND     "${${ep}_PATCH_CMD}"
     CONFIGURE_COMMAND ""  # No configure step
     BUILD_COMMAND     ""  # No build step
-    INSTALL_COMMAND   ${${ep}_INSTALL_CMD}
+    INSTALL_COMMAND   "${${ep}_INSTALL_CMD}"
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
-    STEP_TARGETS download install# Only enable download and install (unzip)
+    STEP_TARGETS download install # Only enable download and install (unzip)
     LOG_DOWNLOAD ON
 )

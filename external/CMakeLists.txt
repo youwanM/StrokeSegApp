@@ -10,7 +10,7 @@ else()
 endif()
 
 # Iterate over each found custumPhase
-file(GLOB custumPhases "./costumPhases/*.cmake")
+file(GLOB custumPhases "./customPhases/commands/*.cmake")
 foreach(custumPhase ${custumPhases})
     include(${custumPhase})
 endforeach()
@@ -21,7 +21,7 @@ file(GLOB modules "*.cmake")
 foreach(module ${modules})    
     get_filename_component(ep ${module} NAME_WE) # Get the file name without the extension
     message(STATUS "Including module: ${ep}")   
-    include(${module}) # Include the CMake module    
+    include(${module})                           # Include the CMake module    
     list(APPEND ALL_DEPENDENCIES ${ep})
 endforeach()
 
