@@ -1,4 +1,4 @@
-set(_EP embed_python)
+set(_EP StrokeSegBootStrapper)
 
 ###############################################################################
 ## DOWNLOAD COMMAND
@@ -13,7 +13,7 @@ set(StrokeSegBootStrapper_PATCH_CMD
     ${CMAKE_COMMAND}
     -DWORKING_DIR=${CMAKE_CURRENT_SOURCE_DIR}/BootStrap
     -P
-    ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/StrokSegBootStrapperPatch.cmake)
+    ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/StrokeSegBootStrapperPatch.cmake)
 
 
 ###############################################################################

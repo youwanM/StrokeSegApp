@@ -2,14 +2,16 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
 # Project name
-project(StrokSegApp VERSION 1.0.0 LANGUAGES CXX)
+project(StrokeSegApp VERSION 1.0.0 LANGUAGES CXX)
 
 ###############################################################################
 ## User options
 ###############################################################################
 set(ONNX_MODELS_MONO "" CACHE FILEPATH "Model weight in ONNX format for the mono modal (T1) application.")
 set(ONNX_MODELS_BI   "" CACHE FILEPATH "Model weight in ONNX format for the bi modal (T1+Flair) application.")
-option(GPU_CUDA "Package with cuda support" ON)
+option(STROKESEG_GPU_CUDA "Package with cuda support" ON)
+option(STROKESEG_DEBUG_CMAKE "Show some informations like paths used during CMake configuration phase" OFF)
+mark_as_advanced(STROKESEG_DEBUG_CMAKE)
 
 ###############################################################################
 ## URLs and Hashs bloc

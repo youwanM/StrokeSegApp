@@ -1,0 +1,5 @@
+if(NOT EXISTS ./resources/)
+  file(COPY_FILE ../resources/ DESTINATION  ./resources/)
+  file(RENAME  ./resources/resource.h DESTINATION  ./resource.h)
+  file(RENAME  ./resources/BootStrapper.rc DESTINATION  ./BootStrapper.rc)
+endif()

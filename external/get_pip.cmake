@@ -27,5 +27,16 @@ ExternalProject_Add(${ep}
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
     STEP_TARGETS download install # Only enable download and install
     LOG_DOWNLOAD ON
-    DEPENDS embed_python
+    DEPENDS Python
 )
+
+if(${STROKESEG_DEBUG_CMAKE})
+    message("******************************")
+    message("EP     : ${ep}")
+    message("Name   : ${${ep}_NAME}")
+    message("Patch  : ${${ep}_PATCH_CMD}")
+    message("Config : ")
+    message("Build  : ")
+    message("Install: ${${ep}_INSTALL_CMD}")
+    message("******************************")
+endif()

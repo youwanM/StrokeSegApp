@@ -4,7 +4,7 @@ set(PYTHON_FOLDER "${PYTHON_DEST_DIR}")
 file(TO_NATIVE_PATH ${PYTHON_DEST_DIR} PYTHON_NATIVE_FOLDER)
 set(NEW_PATH "${PYTHON_NATIVE_FOLDER}\\;${PYTHON_NATIVE_FOLDER}\\Scripts")
 
-if(${GPU_CUDA})
+if(${STROKESEG_GPU_CUDA})
     set(ONNX_RUNTIME "onnxruntime-gpu[cudnn]")
 else()
     set(ONNX_RUNTIME "onnxruntime")

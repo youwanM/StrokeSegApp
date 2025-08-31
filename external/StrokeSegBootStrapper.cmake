@@ -16,7 +16,7 @@ ExternalProject_Add(${ep}
     DOWNLOAD_DIR "${EP_BASE_PATH}/download/${ep}/"
     SOURCE_DIR   "${CMAKE_SOURCE_DIR}/BootStrap"
     BINARY_DIR   "${EP_BASE_PATH}/build/${ep}/"
-    INSTALL_DIR  "${CMAKE_BINARY_DIR}/bin/Program/StrokeSegCore/"
+    INSTALL_DIR  "${STROKE_SEG_BOOT_DEST_DIR}"
     LOG_DIR      "${EP_BASE_PATH}/log/${ep}/"    
     
     CMAKE_GENERATOR ${gen}
@@ -24,3 +24,14 @@ ExternalProject_Add(${ep}
     CMAKE_ARGS ${cmake_args}
     CMAKE_CACHE_ARGS ${cmake_cache_args}
 )
+
+if(${STROKESEG_DEBUG_CMAKE})
+    message("******************************")
+    message("EP     : ${ep}")
+    message("Name   : ${${ep}_NAME}")
+    message("Patch  : ${${ep}_PATCH_CMD}")
+    message("Config : ")
+    message("Build  : ")
+    message("Install: ${${ep}_INSTALL_CMD}")
+    message("******************************")
+endif()

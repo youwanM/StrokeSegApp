@@ -1,4 +1,4 @@
-set(_EP embed_python)
+set(_EP Python)
 
 ###############################################################################
 ## DOWNLOAD COMMAND
@@ -11,9 +11,9 @@ set(_EP embed_python)
 ###############################################################################
 set(${_EP}_PATCH_CMD  
     ${CMAKE_COMMAND}
-    -DWORKING_DIR=${CMAKE_BINARY_DIR}/ExtProjs/source/embed_python
+    -DWORKING_DIR=${CMAKE_BINARY_DIR}/ExtProjs/source/Python
     -P
-    ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/pythonPatch.cmake)
+    ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/PythonPatch.cmake)
 
 
 ###############################################################################
@@ -21,7 +21,7 @@ set(${_EP}_PATCH_CMD
 ###############################################################################    
 set(${_EP}_INSTALL_CMD  
     ${CMAKE_COMMAND}
-    -E
-    copy_directory_if_different
-    ${CMAKE_BINARY_DIR}/ExtProjs/source/embed_python
-    ${PYTHON_DEST_DIR})
+    -DSOURCE_DIR=${CMAKE_BINARY_DIR}/ExtProjs/source/Python
+    -DDESTINATION_DIR=${PYTHON_DEST_DIR}
+    -P
+    ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/PythonInstall.cmake)

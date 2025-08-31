@@ -10,10 +10,13 @@ else()
 endif()
 
 # Iterate over each found custumPhase
-file(GLOB custumPhases "./customPhases/commands/*.cmake")
+file(GLOB custumPhases "customPhases/commands/*.cmake")
 foreach(custumPhase ${custumPhases})
+    message(STATUS "Including custom command from: ${custumPhase}") 
     include(${custumPhase})
 endforeach()
+message(STATUS " ")
+ 
 #############################################################################
 
 # Iterate over each found module
@@ -24,5 +27,6 @@ foreach(module ${modules})
     include(${module})                           # Include the CMake module    
     list(APPEND ALL_DEPENDENCIES ${ep})
 endforeach()
+message(STATUS " ")
 
 set(ALL_DEPENDENCIES ${ALL_DEPENDENCIES} PARENT_SCOPE)

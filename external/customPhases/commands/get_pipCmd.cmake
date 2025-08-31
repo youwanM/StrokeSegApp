@@ -21,9 +21,16 @@ set(${_EP}_DOWNLOAD_CMD
 ###############################################################################
 ## INSTALL COMMAND
 ###############################################################################
+#set(${_EP}_INSTALL_CMD  
+#    ${CMAKE_COMMAND}
+#    -E
+#    copy_if_different
+#    ${CMAKE_BINARY_DIR}/ExtProjs/source/get_pip/get-pip.py
+#    ${PYTHON_DEST_DIR}/) 
+
 set(${_EP}_INSTALL_CMD  
     ${CMAKE_COMMAND}
-    -E
-    copy_if_different
-    ${CMAKE_BINARY_DIR}/ExtProjs/source/get_pip/get-pip.py
-    ${PYTHON_DEST_DIR}/) 
+    -DSOURCE_FILE=${CMAKE_BINARY_DIR}/ExtProjs/source/get_pip/get-pip.py
+    -DDESTINATION_DIR=${PYTHON_DEST_DIR}
+    -P
+    ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/get_pipInstall.cmake)

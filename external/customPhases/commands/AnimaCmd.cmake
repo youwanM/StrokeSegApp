@@ -1,4 +1,4 @@
-set(_EP anima)
+set(_EP Anima)
 
 # Define the list of Anima executables to copy
 set(ANIMA_EXECUTABLES
@@ -34,4 +34,4 @@ set(${_EP}_INSTALL_CMD
     -DANIMA_DEST_DIR=${ANIMA_DEST_DIR}
     -DANIMA_EXECUTABLES=${ANIMA_EXECUTABLES}
     -P
-    ${CMAKE_CURRENT_SOURCE_DIR}/costumPhases/scripts/animaInstall.cmake)
+    ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/animaInstall.cmake)
