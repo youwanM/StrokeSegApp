@@ -3,8 +3,9 @@
 ###############################################################################
 ## Install phases for CPack bundelling
 ###############################################################################
-install(DIRECTORY ${CMAKE_BINARY_DIR}/bin/Program/ DESTINATION . COMPONENT BIN)
-install(DIRECTORY ${CMAKE_BINARY_DIR}/bin/AppData/ DESTINATION . COMPONENT DATA)
+install(DIRECTORY ${CMAKE_BINARY_DIR}/bin/Program/ DESTINATION       . COMPONENT BIN)
+install(DIRECTORY ${CMAKE_BINARY_DIR}/bin/AppData/Atlas DESTINATION  . COMPONENT ATLAS)
+install(DIRECTORY ${CMAKE_BINARY_DIR}/bin/AppData/Models DESTINATION . COMPONENT MODELS)
 
 ###############################################################################
 ## Set common CPACK parameters
@@ -31,11 +32,13 @@ set(CPACK_RESOURCE_FILE_WELCOME    "${CMAKE_SOURCE_DIR}/Welcome.md")
 
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "${CPACK_PACKAGE_NAME}")
 
-set(CPACK_CREATE_DESKTOP_LINKS "${CPACK_PACKAGE_NAME}") # Add a desktop shortcut
-set(CPACK_PACKAGE_EXECUTABLES ${CPACK_PACKAGE_NAME}Core/${CPACK_PACKAGE_NAME}BootStrapper.exe;${CPACK_PACKAGE_NAME}) # Add shortcut in the Startup menu
+set(CPACK_PACKAGE_EXECUTABLES ${CPACK_PACKAGE_NAME}BootStrapper;${CPACK_PACKAGE_NAME}) # Add shortcut in the Startup menu
+set(CPACK_CREATE_DESKTOP_LINKS ${CPACK_PACKAGE_NAME}) # Add a desktop shortcut
 
 set(CPACK_THREADS 0)
 
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME} ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR} Setup")
+					
 ###############################################################################
 ## Set cpack variables specific to the plateform
 ###############################################################################
@@ -50,3 +53,25 @@ endif()
 ###############################################################################
 include (CPack)
 
+cpack_add_component_group(DATA
+                          DISPLAY_NAME "Data"
+                          DESCRIPTION "Data used by application internaly like IA models, atlas and mask."
+						  EXPANDED)
+						  
+cpack_add_component(BIN
+                    DISPLAY_NAME Software
+                    DESCRIPTION "Contains IA, Algorithums and Graphics Interface"
+                    REQUIRED)
+
+cpack_add_component(ATLAS
+                    DISPLAY_NAME Atlas
+                    DESCRIPTION "Atlas and mask"
+					GROUP DATA
+                    REQUIRED)
+
+cpack_add_component(MODELS
+                    DISPLAY_NAME Models
+                    DESCRIPTION "Contains IA models"
+					GROUP DATA)
+
+set(CPACK_COMPONENT_APPLICATIONS_GROUP "Runtime")

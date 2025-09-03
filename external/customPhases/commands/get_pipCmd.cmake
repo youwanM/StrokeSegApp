@@ -19,15 +19,14 @@ set(${_EP}_DOWNLOAD_CMD
 
 
 ###############################################################################
+## BUILD COMMAND
+###############################################################################    
+
+
+
+###############################################################################
 ## INSTALL COMMAND
 ###############################################################################
-#set(${_EP}_INSTALL_CMD  
-#    ${CMAKE_COMMAND}
-#    -E
-#    copy_if_different
-#    ${CMAKE_BINARY_DIR}/ExtProjs/source/get_pip/get-pip.py
-#    ${PYTHON_DEST_DIR}/) 
-
 set(${_EP}_INSTALL_CMD  
     ${CMAKE_COMMAND}
     -DSOURCE_FILE=${CMAKE_BINARY_DIR}/ExtProjs/source/get_pip/get-pip.py

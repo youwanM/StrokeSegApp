@@ -1,13 +1,17 @@
 file(MAKE_DIRECTORY ${ONNX_MODELS_DEST_DIR})
 
-# Déclaration des variables de commande par défaut
+###############################################################################
+##  Models code blocs
+###############################################################################
+set(ONNX_MODELS_MONO "" CACHE FILEPATH "Model weight in ONNX format for the mono modal (T1) application.")
+set(ONNX_MODELS_BI   "" CACHE FILEPATH "Model weight in ONNX format for the bi modal (T1+Flair) application.")
+
 set(ONNX_MODELS_MONO_COPY_CMD "")
 set(ONNX_MODELS_BI_COPY_CMD "")
 
-# if ONN_MODELS_MONO is set, copy the mono model and Check if the file exists
+### MONO MODEL
 if(EXISTS "${ONNX_MODELS_MONO}")
     message(STATUS "Copying mono ONNX model from: ${ONNX_MODELS_MONO}")
-    # Use execute_process with CMAKE_COMMAND -E copy
     set(ONNX_MODELS_MONO_COPY_CMD
         ${CMAKE_COMMAND}
         -E
@@ -15,14 +19,17 @@ if(EXISTS "${ONNX_MODELS_MONO}")
         ${ONNX_MODELS_MONO}
         ${ONNX_MODELS_DEST_DIR})
 else()
-    set(ONNX_MODELS_MONO "" CACHE FILEPATH "Model weight in ONNX format for the mono modal (T1) application." FORCE)
-    message(SEND_ERROR "Mono ONNX model path does not exist or is not a directory: ${ONNX_MODELS_MONO}")
+    if("${ONNX_MODELS_MONO}" STREQUAL "")
+	    message("Mono ONNX model path are not specified. Application will be generate without Mono-model.")
+	else()
+	    message(SEND_ERROR "Mono ONNX model path does not exist or is not a directory: ${ONNX_MODELS_MONO}")
+        set(ONNX_MODELS_MONO "" CACHE FILEPATH "Model weight in ONNX format for the mono modal (T1) application." FORCE)	
+	endif()
 endif()
 
-# if ONN_MODELS_BI is set, copy the bi model and Check if the directory and file exist
+### Bi MODEL
 if(EXISTS ${ONNX_MODELS_BI})
     message(STATUS "Copying bi ONNX model from: ${ONNX_MODELS_BI}")
-    # Use execute_process with CMAKE_COMMAND -E copy
     set(ONNX_MODELS_BI_COPY_CMD 
         ${CMAKE_COMMAND}
         -E
@@ -30,10 +37,19 @@ if(EXISTS ${ONNX_MODELS_BI})
         ${ONNX_MODELS_BI}
         ${ONNX_MODELS_DEST_DIR})
 else()
-    set(ONNX_MODELS_BI   "" CACHE FILEPATH "Model weight in ONNX format for the bi modal (T1+Flair) application." FORCE)
-    message(SEND_ERROR "Bi ONNX model path does not exist or is not a directory: ${ONNX_MODELS_BI}")
+    if("${ONNX_MODELS_MONO}" STREQUAL "")
+	    message("Bi ONNX model path are not specified. Application will be generate without Mono-model.")
+	else()
+	    message(SEND_ERROR "Bi ONNX model path does not exist or is not a directory: ${ONNX_MODELS_MONO}")
+        set(ONNX_MODELS_BI   "" CACHE FILEPATH "Model weight in ONNX format for the bi modal (T1+Flair) application." FORCE)	
+	endif()
 endif()
 
+
+
+###############################################################################
+##  Atlas code blocs
+###############################################################################
 file(MAKE_DIRECTORY ${ATLAS_DEST_DIR})
 set(Reference_T1_DOWNLOAD_CMD
     ${CMAKE_COMMAND}
@@ -49,12 +65,23 @@ set(BRAIN_MASK_DOWNLOAD_CMD
     -P
     ${CMAKE_SOURCE_DIR}/cmake/DownloadFile.cmake)
 
-add_custom_target(PopulateData
+
+
+###############################################################################
+##  Create PopulateData targets
+###############################################################################
+add_custom_target(PopulateDataAtlas
     ALL
-    COMMENT "Populating data directories"
+    COMMENT "Populating data directories with Atlas and Mask"
     COMMAND ${Reference_T1_DOWNLOAD_CMD}
     COMMAND ${BRAIN_MASK_DOWNLOAD_CMD}
+)
+
+add_custom_target(PopulateDataModels
+    ALL
+    COMMENT "Populating data directories with Models"
     COMMAND ${ONNX_MODELS_MONO_COPY_CMD}
     COMMAND ${ONNX_MODELS_BI_COPY_CMD}
 )
 
+message(STATUS "")

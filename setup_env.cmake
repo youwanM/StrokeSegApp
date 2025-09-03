@@ -23,6 +23,9 @@ add_custom_target(setup_environment
     COMMAND  ${CMAKE_COMMAND} -E env PATH="${NEW_PATH}" ./python.exe -m pip install scipy
     COMMAND  ${CMAKE_COMMAND} -E env PATH="${NEW_PATH}" ./python.exe -m pip install tkhtmlview
     COMMAND  ${CMAKE_COMMAND} -E env PATH="${NEW_PATH}" ./python.exe -m pip install markdown
+    COMMAND  ${CMAKE_COMMAND} -E env PATH="${NEW_PATH}" ./python.exe -m pip install scikit-image
+    COMMAND  ${CMAKE_COMMAND} -E env PATH="${NEW_PATH}" ./python.exe -m pip install scikit-learn
+    COMMAND  ${CMAKE_COMMAND} -E env PATH="${NEW_PATH}" ./python.exe -m pip install pandas
 )
 
 # Now, add dependencies to setup_environment

@@ -9,11 +9,7 @@ set(_EP StrokeSegCore)
 ###############################################################################
 ## PATCH COMMAND
 ###############################################################################
-#set(${_EP}_PATCH_CMD  
-#    ${CMAKE_COMMAND}
-#    -DCore_DIR=${CMAKE_BINARY_DIR}/ExtProjs/source/StrokeSegCore
-#    -P
-#    ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/StrokeSegCorePatch.cmake)
+
 
 
 ###############################################################################
