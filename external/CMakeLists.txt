@@ -39,9 +39,9 @@ set(EP_BASE_PATH ${CMAKE_BINARY_DIR}/ExtProjs)
 # projects. It checks for a secondary generator (`CMAKE_EXTRA_GENERATOR`) and
 # falls back to the primary one (`CMAKE_GENERATOR`) if no extra generator is specified.
 if(CMAKE_EXTRA_GENERATOR)
-  set(gen "${CMAKE_EXTRA_GENERATOR} -G ${CMAKE_GENERATOR}")
+    set(gen "${CMAKE_EXTRA_GENERATOR} -G ${CMAKE_GENERATOR}")
 else()
-  set(gen "${CMAKE_GENERATOR}")
+    set(gen "${CMAKE_GENERATOR}")
 endif()
 
 

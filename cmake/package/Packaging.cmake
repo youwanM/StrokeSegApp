@@ -72,7 +72,7 @@ set(CPACK_CREATE_DESKTOP_LINKS ${CPACK_PACKAGE_NAME})
 set(CPACK_THREADS 0)
 
 set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME} ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR} Setup")
-					
+                    
 # --- Platform-Specific Configuration Block ---
 # This block includes a separate configuration file for Windows-specific
 # settings if the current build platform is WIN32. This modular approach
@@ -94,8 +94,8 @@ include (CPack)
 cpack_add_component_group(DATA
                           DISPLAY_NAME "Data"
                           DESCRIPTION "Data used by application internaly like IA models, atlas and mask."
-						  EXPANDED)
-						  
+                          EXPANDED)
+                          
 cpack_add_component(BIN
                     DISPLAY_NAME Software
                     DESCRIPTION "Contains IA, Algorithums and Graphics Interface"
@@ -104,12 +104,12 @@ cpack_add_component(BIN
 cpack_add_component(ATLAS
                     DISPLAY_NAME Atlas
                     DESCRIPTION "Atlas and mask"
-					GROUP DATA
+                    GROUP DATA
                     REQUIRED)
 
 cpack_add_component(MODELS
                     DISPLAY_NAME Models
                     DESCRIPTION "Contains IA models"
-					GROUP DATA)
+                    GROUP DATA)
 
 set(CPACK_COMPONENT_APPLICATIONS_GROUP "Runtime")
