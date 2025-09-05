@@ -1,7 +1,23 @@
+# Fichier: AnimaInstall.cmake
+#
+# Description: This script handles the installation of the Anima executables.
+# It takes the source and destination directories as input and copies the
+# specified list of executables to the installation location.
+#
+# Main functional blocks:
+# 1. Directory Creation: Ensures the destination directory exists.
+# 2. Executable Copying Loop: Iterates through the list of executables,
+#    locates each one, and copies it to the destination, providing a warning
+#    if a file is not found.
+
+# ANIMA_UNPACK_DIR
+# ANIMA_DEST_DIR
+# ANIMA_EXECUTABLES
 
 file(MAKE_DIRECTORY "${ANIMA_DEST_DIR}")
 
-
+# The list of executables is passed as a comma-separated string,
+# so we convert it back to a list.
 string(REPLACE "," ";" ANIMA_EXECUTABLES ${ANIMA_EXECUTABLES})
 message("${ANIMA_EXECUTABLES}")
 foreach(executable ${ANIMA_EXECUTABLES})

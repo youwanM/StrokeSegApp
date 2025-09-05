@@ -1,4 +1,25 @@
+# Fichier: StrokeSegBootStrapper.cmake
+#
+# Description: This CMake module manages the `StrokeSegBootStrapper` external
+# project. It is configured to build a native executable from local source
+# files and install it to a specified destination. This bootstrapper is a
+# critical component for launching the main application.
+#
+# Main functional blocks:
+# 1. Arguments Definition: Sets the necessary `cmake_args` and `cmake_cache_args`
+#    for the external project, including the installation prefix and a custom
+#    prefix name.
+# 2. `ExternalProject_Add` Call: Configures the build and installation process
+#    for the bootstrapper. It specifies the local source directory, the build
+#    directory, and the final installation directory.
+# 3. Debugging Messages: Displays configuration details for debugging if the
+#    `STROKESEG_DEBUG_CMAKE` option is enabled.
 
+
+# --- Arguments Definition Block ---
+# This block sets the arguments passed to the external project's CMake call.
+# It defines the installation prefix and a custom prefix name that will be
+# used during the build.
 set(cmake_args
   ${ep_common_cache_args}
   )
@@ -8,6 +29,10 @@ set(cmake_cache_args
   -DPREFIX_NAME:STRING=StrokeSeg 
   )
 
+# --- `ExternalProject_Add` Call Block ---
+# This block configures the external project for the bootstrapper. It points
+# to a local source directory (`CMAKE_SOURCE_DIR}/BootStrap`) instead of a
+# remote URL, ensuring that the local code is built and installed correctly.
 ExternalProject_Add(${ep}
     PREFIX "${EP_BASE_PATH}"
     
@@ -25,6 +50,9 @@ ExternalProject_Add(${ep}
     CMAKE_CACHE_ARGS ${cmake_cache_args}
 )
 
+# --- Debugging Messages Block ---
+# This block provides a final set of messages to confirm the configuration
+# of the bootstrapper project, which is useful for debugging.
 if(${STROKESEG_DEBUG_CMAKE})
     message("******************************")
     message("EP     : ${ep}")

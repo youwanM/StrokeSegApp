@@ -1,4 +1,26 @@
+# Fichier: Python.cmake
+#
+# Description: This CMake module manages the Python external project. It is
+# responsible for downloading an embedded version of the Python interpreter,
+# verifying its integrity with a SHA256 hash, and installing it into the
+# project's designated directory. This ensures that the application has a
+# self-contained Python environment.
+#
+# Main functional blocks:
+# 1. `ExternalProject_Add` Call: Configures the download and installation of
+#    the Python interpreter. It defines the paths and sets the step targets
+#    to only include `download` and `install` as the package is a pre-compiled
+#    archive.
+# 2. URL and Hash Verification: Uses the pre-defined URL and SHA256 hash to
+#    securely fetch the Python archive.
+# 3. Debugging Messages: Provides optional `message` commands for displaying
+#    configuration details when debug mode is enabled.
 
+
+# --- `ExternalProject_Add` Call Block ---
+# This block sets up the external project for Python. It defines all the
+# necessary paths and tells CMake how to download and install the
+# embedded Python package.
 ExternalProject_Add(${ep}
     PREFIX "${EP_BASE_PATH}"
     
@@ -28,6 +50,9 @@ ExternalProject_Add(${ep}
     LOG_DOWNLOAD ON
 )
 
+# --- Debugging Messages Block ---
+# This block provides debugging messages, similar to other external projects,
+# to help diagnose configuration issues.
 if(${STROKESEG_DEBUG_CMAKE})
     message("******************************")
     message("EP     : ${ep}")

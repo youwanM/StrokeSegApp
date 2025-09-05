@@ -1,3 +1,16 @@
+# Fichier: PythonCmd.cmake
+#
+# Description: This CMake command module defines the patch and installation
+# commands for the Python external project. It leverages dedicated scripts
+# to handle these specific phases, ensuring the Python environment is
+# correctly configured after being downloaded.
+#
+# Main functional blocks:
+# 1. Patch Command Definition: Constructs a command to run a script that
+#    applies any necessary patches to the Python installation.
+# 2. Install Command Definition: Defines the command to install the Python
+#    files into the designated destination directory.
+
 set(_EP Python)
 
 ###############################################################################

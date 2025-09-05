@@ -1,8 +1,35 @@
-file(MAKE_DIRECTORY ${ONNX_MODELS_DEST_DIR})
+# Fichier: populateData.cmake
+#
+# Description: This script is responsible for populating the application's
+# data directories with necessary files, including ONNX models and medical
+# image atlases. It defines custom targets to handle the copying of user-
+# specified models and the downloading of pre-defined atlas files, ensuring
+# the application has all the data it needs to function.
+#
+# Main functional blocks:
+# 1. Model Handling: Checks for the existence of user-specified ONNX models
+#    (mono and bi modal) and sets up copy commands to move them to the
+#    correct destination. It also provides informative messages or errors
+#    if a model path is not found.
+# 2. Atlas Downloading: Configures commands to download the reference T1 atlas
+#    and the brain mask from a remote URL. It uses a separate CMake script
+#    for the download process.
+# 3. Custom Target Creation: Defines two distinct custom targets:
+#    `PopulateDataAtlas` and `PopulateDataModels`. These targets encapsulate
+#    the data population logic, making the build process modular and easy to
+#    manage.
+
+
 
 ###############################################################################
-##  Models code blocs
+##  Models Handling Block
 ###############################################################################
+# This block first creates the destination directory for ONNX models. It then
+# checks if the user has provided valid paths for the mono and bi-modal ONNX
+# models. If a path exists, it sets up a copy command. If not, it provides
+# an informative message to the user.
+file(MAKE_DIRECTORY ${ONNX_MODELS_DEST_DIR})
+
 set(ONNX_MODELS_MONO "" CACHE FILEPATH "Model weight in ONNX format for the mono modal (T1) application.")
 set(ONNX_MODELS_BI   "" CACHE FILEPATH "Model weight in ONNX format for the bi modal (T1+Flair) application.")
 
@@ -48,8 +75,12 @@ endif()
 
 
 ###############################################################################
-##  Atlas code blocs
+##  Atlas Downloading Block
 ###############################################################################
+# This block creates the destination directory for the atlas files and defines
+# two command variables for downloading the reference T1 image and the brain
+# mask. These commands use a separate `DownloadFile.cmake` script to handle
+# the actual download process.
 file(MAKE_DIRECTORY ${ATLAS_DEST_DIR})
 set(Reference_T1_DOWNLOAD_CMD
     ${CMAKE_COMMAND}
@@ -68,8 +99,12 @@ set(BRAIN_MASK_DOWNLOAD_CMD
 
 
 ###############################################################################
-##  Create PopulateData targets
+##  Custom Target Creation Block
 ###############################################################################
+# This block defines the two custom targets for populating the data:
+# `PopulateDataAtlas` and `PopulateDataModels`. These targets are set to run
+# by default (`ALL`) and handle the execution of the download and copy commands,
+# respectively, ensuring that all necessary data files are in place.
 add_custom_target(PopulateDataAtlas
     ALL
     COMMENT "Populating data directories with Atlas and Mask"

@@ -1,3 +1,15 @@
+# Description: This CMake command module defines the build and install phases
+# for the main StrokeSegCore project. It acts as a bridge, calling dedicated
+# scripts to handle the complex logic of compiling the source code and
+# installing the resulting binaries.
+#
+# Main functional blocks:
+# 1. Build Command Definition: Constructs a command to execute the
+#    `StrokeSegCoreBuild.cmake` script, which manages the compilation process.
+# 2. Install Command Definition: Defines the command to run the
+#    `StrokeSegCoreInstall.cmake` script, responsible for copying the compiled
+#    binaries to the installation directory.
+
 set(_EP StrokeSegCore)
 
 ###############################################################################

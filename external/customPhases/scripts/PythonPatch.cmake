@@ -1,3 +1,17 @@
+# Fichier: PythonPatch.cmake
+#
+# Description: This script modifies Python's `.pth` files to enable site
+# packages and add the application's core directory to the Python path. This
+# is a critical step for a self-contained Python environment.
+#
+# Main functional blocks:
+# 1. File Search: Searches for all files with the `._pth` extension.
+# 2. Content Modification Loop: Iterates through each file, reads its content,
+#    and performs two string replacements: un-commenting `import site` and
+#    adding the `..\\StrokeSegCore` path.
+# 3. File Rewriting: Writes the modified content back to the file if changes
+#    were made.
+
 # Script to iterate through files and modify their content.
 # Defines the working directory to search for files.
 

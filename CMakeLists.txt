@@ -1,21 +1,44 @@
+# Fichier: CMakeLists.txt
+#
+# Description: This is the main CMakeLists.txt for the StrokeSegApp project. It
+# defines the project's properties, user options, and the overall build structure.
+# It includes other CMake files to handle specific tasks like environment setup,
+# external project integration, data population, and packaging.
+#
+# Main functional blocks:
+# 1. Project Configuration: Sets the minimum required CMake version and project
+#    details.
+# 2. User Options: Defines configurable options that can be set by the user,
+#    such as GPU support and debug mode.
+# 3. URLs and Hashes: Centralizes URLs and integrity hashes for external
+#    dependencies.
+# 4. Path Definitions: Specifies the installation directories for all project
+#    components.
+# 5. Target Includes: Includes and integrates external projects, setup scripts,
+#    data population scripts, and packaging logic.
+
 # Set the minimum required CMake version
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
 # Project name
 project(StrokeSegApp VERSION 1.0.0 LANGUAGES CXX)
 
-###############################################################################
-## User options
-###############################################################################
+# --- User Options Block ---
+# This block defines several options that allow the user to customize the
+# build process. These options control whether to enable CUDA support for
+# GPU acceleration, and whether to show debug information during CMake
+# configuration.
 set(ONNX_MODELS_MONO "" CACHE FILEPATH "Model weight in ONNX format for the mono modal (T1) application.")
 set(ONNX_MODELS_BI   "" CACHE FILEPATH "Model weight in ONNX format for the bi modal (T1+Flair) application.")
 option(STROKESEG_GPU_CUDA "Package with cuda support" ON)
 option(STROKESEG_DEBUG_CMAKE "Show some informations like paths used during CMake configuration phase" OFF)
 mark_as_advanced(STROKESEG_DEBUG_CMAKE)
 
-###############################################################################
-## URLs and Hashs bloc
-###############################################################################
+# --- URLs and Hashes Block ---
+# This block centralizes all URLs and corresponding SHA256 hashes for external
+# dependencies, ensuring that the project can reliably download and verify
+# components like the Python interpreter, pip installer, and other libraries
+# from their official sources.
 set(Python_URL           "https://www.python.org/ftp/python/3.13.4/python-3.13.4-embed-amd64.zip")
 set(get_pip_URL          "https://bootstrap.pypa.io/get-pip.py")
 set(Anima_URL            "https://github.com/Inria-Empenn/Anima-Public/releases/download/v4.2/Anima-Windows-4.2.zip")
@@ -29,9 +52,11 @@ set(get_pip_HASH         "b4c0f2a23c8c26893d5b9bdcd3ef8e6d3915d90f84acccafa3e782
 set(Anima_HASH           "42ff5cca0537b9fb3cd43fe83ffb7c042926afd9e203f9a739a27ac969384ed6")
 
 
-###############################################################################
-## Define paths for installed components relative to the EXTERNAL_INSTALL_ROOT
-###############################################################################
+# --- Path Definitions Block ---
+# This block defines the destination directories for all components of the
+# project relative to the build directory. This centralized approach
+# ensures a consistent and predictable file structure for the final
+# packaged application.
 set(PYTHON_DEST_DIR          "${CMAKE_BINARY_DIR}/bin/Program/Python")
 set(ANIMA_DEST_DIR           "${CMAKE_BINARY_DIR}/bin/Program/Anima")
 set(STROKE_SEG_CORE_DEST_DIR "${CMAKE_BINARY_DIR}/bin/Program/StrokeSegCore")
@@ -40,18 +65,16 @@ set(ONNX_MODELS_DEST_DIR     "${CMAKE_BINARY_DIR}/bin/AppData/Models")
 set(ATLAS_DEST_DIR           "${CMAKE_BINARY_DIR}/bin/AppData/Atlas")
 
 
-###############################################################################
-## Targets
-###############################################################################
+# --- Target Includes Block ---
+# This block integrates the sub-projects and scripts that form the core
+# of the build process. It includes the `setup_env.cmake` script for
+# environment configuration, `populateData.cmake` for handling data, and
+# the `packaging.cmake` script for creating the final installer.
 
-## External Targets (python, pip, anima, StrokeSegLab, ...)
-add_subdirectory(external)
+add_subdirectory(external) # External Targets (python, pip, anima, StrokeSegLab, ...)
 
-## Core Setup Target
 include(setup_env.cmake)
 
-## Populate Data Target
 include(populateData.cmake)
 
-## Create install step for bundelling and package it after 
 include(cmake/package/packaging.cmake)

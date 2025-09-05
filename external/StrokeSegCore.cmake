@@ -1,4 +1,25 @@
+# Fichier: StrokeSegCore.cmake
+#
+# Description: This CMake module is responsible for fetching, building, and
+# installing the main `StrokeSegCore` project from a Git repository. It uses
+# `ExternalProject_Add` to clone the source code, build it according to the
+# specified generator, and then install the final product.
+#
+# Main functional blocks:
+# 1. `ExternalProject_Add` Call: Configures the entire lifecycle for the
+#    `StrokeSegCore` project, from downloading a specific branch (`main`)
+#    from a Git repository to building and installing the project.
+# 2. Git Configuration: Specifies the Git repository URL and the branch to
+#    clone.
+# 3. Build and Install Commands: Specifies the commands for the `build` and
+#    `install` steps, which are crucial for a project that requires compilation.
+# 4. Debugging Messages: Provides optional `message` commands for debugging.
 
+
+# --- `ExternalProject_Add` Call Block ---
+# This block sets up the external project for `StrokeSegCore`. It defines all
+# the necessary paths and tells CMake how to handle the project from a Git
+# repository.
 ExternalProject_Add(${ep}
     PREFIX "${EP_BASE_PATH}"
     
@@ -28,6 +49,9 @@ ExternalProject_Add(${ep}
     LOG_DOWNLOAD ON
 )
 
+# --- Debugging Messages Block ---
+# This block provides a final set of messages to confirm the configuration
+# of the core project, which is useful for debugging.
 if(${STROKESEG_DEBUG_CMAKE})
     message("******************************")
     message("EP     : ${ep}")

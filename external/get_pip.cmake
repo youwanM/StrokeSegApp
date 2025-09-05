@@ -1,4 +1,25 @@
+# Fichier: get_pip.cmake
+#
+# Description: This CMake module is responsible for fetching the `get-pip.py`
+# script, which is a crucial first step for setting up the Python environment.
+# It ensures that the script is downloaded from a trusted URL and its integrity
+# is verified before it is used to install other Python dependencies.
+#
+# Main functional blocks:
+# 1. `ExternalProject_Add` Call: Configures the download and installation
+#    process for `get-pip.py`.
+# 2. URL and Hash Verification: Specifies the URL for the script and the
+#    SHA256 hash to guarantee a secure and uncorrupted download.
+# 3. Execution Dependency: Sets a dependency on the `Python` external project,
+#    ensuring that the Python interpreter is available before attempting to
+#    download the `get-pip.py` script.
+# 4. Debugging Messages: Provides optional status messages to help diagnose
+#    any issues with the download or installation process.
 
+
+# --- `ExternalProject_Add` Call Block ---
+# This block sets up the external project for `get-pip.py`. It defines all the
+# necessary paths and commands, ensuring the script is downloaded and installed correctly.
 ExternalProject_Add(${ep}
     PREFIX "${EP_BASE_PATH}"
     
@@ -30,6 +51,10 @@ ExternalProject_Add(${ep}
     DEPENDS Python
 )
 
+# --- Debugging Messages Block ---
+# Similar to other external project modules, this block provides messages
+# for debugging purposes, showing the configuration details of the `get_pip`
+# external project.
 if(${STROKESEG_DEBUG_CMAKE})
     message("******************************")
     message("EP     : ${ep}")
