@@ -57,5 +57,7 @@ set(CPACK_NSIS_ATLAS_INSTALL_DIRECTORY  "$COMMONPROGRAMDATA\\\\${CPACK_PACKAGE_N
 
 set(CPACK_NSIS_MANIFEST_DPI_AWARE ON)
 
-set(CPACK_NSIS_CREATE_ICONS_EXTRA  "  CreateShortCut \\\"$DESKTOP\\\\StrokeSeg.lnk\\\" \\\"$INSTDIR\\\\StrokeSegCore\\\\StrokeSegBootStrapper.exe\\\"")
+set(CPACK_NSIS_CREATE_ICONS_EXTRA  "  StrCmp $INSTALL_DESKTOP \\\"1\\\" 0 NO_DESKTOP_SHORTCUT \\n \\\n \
+  CreateShortCut \\\"$DESKTOP\\\\StrokeSeg.lnk\\\" \\\"$INSTDIR\\\\StrokeSegCore\\\\StrokeSegBootStrapper.exe\\\"  \\n \\\n \
+NO_DESKTOP_SHORTCUT:")
 set(CPACK_NSIS_DELETE_ICONS_EXTRA  "  Delete \\\"$DESKTOP\\\\StrokeSeg.lnk\\\"")
