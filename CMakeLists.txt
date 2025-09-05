@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# License details in LICENSE.md.
+# License details in LICENSE.txt.
 #
 # Author: Florent LERAY
 # Date: 2025-09-05
@@ -59,6 +59,8 @@ set(atlas_BRAIN_MASK_URL "https://github.com/Inria-Empenn/Anima-Scripts-Data-Pub
 set(Python_HASH          "514ca14ec356ecb7749a7c0a1ef1eac9fd9c67d57af4812cb1f0822b0d3a85e8")
 set(get_pip_HASH         "b4c0f2a23c8c26893d5b9bdcd3ef8e6d3915d90f84acccafa3e7829bd0bf4414")
 set(Anima_HASH           "42ff5cca0537b9fb3cd43fe83ffb7c042926afd9e203f9a739a27ac969384ed6")
+set(atlas_BRAIN_MASK_HASH  "b2e48e0e6e48dabe983fe8409bce96544f0d018e79f133db5c4863256d13d139")
+set(atlas_REF_T1_HASH    "0c577b4f8f2c3d60abc4eb9fcaf68c33e26c9a4323b3215a9cb474a76ce4e3de")
 
 
 # --- Path Definitions Block ---
@@ -87,4 +89,3 @@ include(setup_env.cmake)
 include(populateData.cmake)
 
 include(cmake/package/packaging.cmake)
-
