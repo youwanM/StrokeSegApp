@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Fichier: get_pipCmd.cmake
 #
 # Description: This CMake command module defines the download and install

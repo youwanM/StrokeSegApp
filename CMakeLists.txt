@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Fichier: CMakeLists.txt
 #
 # Description: This is the main CMakeLists.txt for the StrokeSegApp project. It
@@ -78,3 +87,4 @@ include(setup_env.cmake)
 include(populateData.cmake)
 
 include(cmake/package/packaging.cmake)
+

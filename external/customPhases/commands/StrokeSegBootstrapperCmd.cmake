@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Fichier: StrokeSegBootstrapperCmd.cmake
 #
 # Description: This CMake command module focuses on the patch phase for the
@@ -36,3 +45,4 @@ set(StrokeSegBootStrapper_PATCH_CMD
 ###############################################################################
 ## INSTALL COMMAND
 ###############################################################################    
+

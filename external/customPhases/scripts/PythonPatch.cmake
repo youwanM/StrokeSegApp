@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Fichier: PythonPatch.cmake
 #
 # Description: This script modifies Python's `.pth` files to enable site
@@ -38,3 +47,4 @@ foreach(_PTH_FILE ${_PTH_FILES})
     endif()
 endforeach()
 message(STATUS "Modification of ._pth files completed.")
+

@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Fichier: AnimaCmd.cmake
 #
 # Description: This CMake command module defines the specific actions for the
@@ -56,3 +65,4 @@ set(${_EP}_INSTALL_CMD
     -DANIMA_EXECUTABLES=${ANIMA_EXECUTABLES}
     -P
     ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/animaInstall.cmake)
+

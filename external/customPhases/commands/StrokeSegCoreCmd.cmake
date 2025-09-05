@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Description: This CMake command module defines the build and install phases
 # for the main StrokeSegCore project. It acts as a bridge, calling dedicated
 # scripts to handle the complex logic of compiling the source code and
@@ -44,3 +53,4 @@ set(${_EP}_INSTALL_CMD
     -DDESTINATION_DIR=${STROKE_SEG_CORE_DEST_DIR}
     -P
     ${CMAKE_CURRENT_SOURCE_DIR}/customPhases/scripts/StrokeSegCoreInstall.cmake)
+

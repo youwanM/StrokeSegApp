@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Fichier: DownloadFile.cmake
 #
 # Description: This utility script is designed to download a file from a specified URL
@@ -49,3 +58,4 @@ if(NOT status)
 endif()
 
 message(STATUS "File downloaded successfully.")
+

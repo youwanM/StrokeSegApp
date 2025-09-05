@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Fichier: AnimaInstall.cmake
 #
 # Description: This script handles the installation of the Anima executables.
@@ -30,3 +39,4 @@ foreach(executable ${ANIMA_EXECUTABLES})
     message(STATUS "Copying ${actual_source_file} to ${ANIMA_DEST_DIR}/")
     file(COPY "${actual_source_file}" DESTINATION "${ANIMA_DEST_DIR}/")
 endforeach()
+

@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Fichier: StrokeSegBootStrapperPatch.cmake
 #
 # Description: This script handles the patching of the StrokeSegBootstrapper
@@ -15,3 +24,4 @@ if(NOT EXISTS ./resources/)
   file(RENAME  ./resources/resource.h DESTINATION  ./resource.h)
   file(RENAME  ./resources/BootStrapper.rc DESTINATION  ./BootStrapper.rc)
 endif()
+

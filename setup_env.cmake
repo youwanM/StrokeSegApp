@@ -1,3 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# License details in LICENSE.md.
+#
+# Author: Florent LERAY
+# Date: 2025-09-05
+#
+# Copyright (c) 2025, INRIA
+
+
 # Fichier: setup_env.cmake
 #
 # Description: This script is responsible for setting up the project's Python
@@ -65,3 +74,4 @@ add_custom_target(setup_environment
 add_dependencies(setup_environment  
     ${ALL_DEPENDENCIES}
 )
+
