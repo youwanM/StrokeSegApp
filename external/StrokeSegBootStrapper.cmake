@@ -57,6 +57,8 @@ ExternalProject_Add(${ep}
     CMAKE_GENERATOR_PLATFORM ${CMAKE_GENERATOR_PLATFORM}
     CMAKE_ARGS ${cmake_args}
     CMAKE_CACHE_ARGS ${cmake_cache_args}
+	
+	PATCH_COMMAND     "${${ep}_PATCH_CMD}"
 )
 
 # --- Debugging Messages Block ---

@@ -20,8 +20,9 @@
 #    from the BootStrappe's `resources` directory to the root of BootStrappe
 
 if(NOT EXISTS ./resources/)
-  file(COPY_FILE ../resources/ DESTINATION  ./resources/)
-  file(RENAME  ./resources/resource.h DESTINATION  ./resource.h)
-  file(RENAME  ./resources/BootStrapper.rc DESTINATION  ./BootStrapper.rc)
+  #file(MAKE_DIRECTORY ./resources/)
+  file(COPY   ../resources/   DESTINATION  ./resources/)
+  file(RENAME  ./resources/resource.h      ./resource.h)
+  file(RENAME  ./resources/BootStrapper.rc ./BootStrapper.rc)
 endif()
 
