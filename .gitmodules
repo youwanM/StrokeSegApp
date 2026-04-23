@@ -1,4 +1,4 @@
 [submodule "BootStrap"]
 	path = BootStrap
-	url = git@github.com:Empenn-Stroke/StrokeSegBootstrapper.git
-	branch = main
+	url = git@github.com:youwanM/StrokeSegBootstrapper.git
+	branch = Frontier

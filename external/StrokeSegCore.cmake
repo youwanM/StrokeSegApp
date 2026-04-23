@@ -41,7 +41,7 @@ ExternalProject_Add(${ep}
     LOG_DIR      "${EP_BASE_PATH}/log/${ep}/"
     
     GIT_REPOSITORY "${${ep}_URL}"
-    GIT_TAG "main"  
+    GIT_TAG "${${ep}_TAG}"  
     
     CMAKE_GENERATOR ${gen}
     CMAKE_GENERATOR_PLATFORM ${CMAKE_GENERATOR_PLATFORM}
