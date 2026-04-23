@@ -71,7 +71,7 @@ set(CPACK_CREATE_DESKTOP_LINKS ${CPACK_PACKAGE_NAME})
 
 set(CPACK_THREADS 0)
 
-set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME} ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR} Setup")
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME} ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR} Setup Frontier Package")
                     
 # --- Platform-Specific Configuration Block ---
 # This block includes a separate configuration file for Windows-specific
